@@ -1,0 +1,16 @@
+cycler==0.10.0
+kiwisolver==1.0.1
+Logbook==1.3.3
+lxml==4.2.1
+matplotlib==2.2.2
+netaddr==0.7.19
+numpy==1.14.3
+py==1.5.3
+pyparsing==2.2.0
+pyshark==0.3.7.11
+python-dateutil==2.7.2
+pytz==2018.4
+scipy==1.0.1
+selenium==3.11.0
+six==1.11.0
+trollius==1.0.4
