@@ -1,0 +1,12 @@
+ps aux|grep 'celery worker' | xargs kill -9
+docker stop rabbitmq
+docker stop redis
+docker rm rabbitmq
+docker rm redis
+source ../../../env/bin/activate
+docker run --name rabbitmq -p 5672:5672 -p 8080:15672 -e RABBITMQ_USERNAME=celeryuser -e RABBITMQ_PASSWORD=celery -e RABBITMQ_VHOST=celeryvhost rabbitmq:3-management &
+docker run --name redis -p 6379:6379 redis &
+sleep 10
+celery -A extract_sample beat &
+celery worker --loglevel=INFO -n get_sample &
+celery worker --loglevel=INFO -n predictor &
