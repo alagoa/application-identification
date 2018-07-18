@@ -34,7 +34,7 @@ struct tcp_header {
 	uint16_t tcp_urp;   
 };
 
-static inline void ipv4_str_addr(const u_int32_t in_addr,char * addr_str)
+static inline void ipv4_str_addr(const u_int32_t in_addr,char * addr_str+)
 {
 	u_int32_t addr=ntohl(in_addr);
 	sprintf(addr_str,"%d.%d.%d.%d",addr>>24,(addr>>16)&0xFF,(addr>>8)&0xFF,addr&0xFF);

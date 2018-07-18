@@ -16,7 +16,7 @@ typedef struct pkt_info {
     uint16_t port;
 } pkt_info;
 
-void my_callback(u_char *args, const struct pcap_pkthdr* pkthdr, const u_char*
+void my_callback(u_char *args, const struct pcap_pkthdr* pkthdr, const  u_char*
     packet)
 {
 
