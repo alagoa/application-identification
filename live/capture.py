@@ -44,6 +44,7 @@ class LiveCap():
 
         iph = unpack(types.IP_HDR_binary_string_format, ip_header)
 
+        length = int(iph[2])
         s_addr = inet_ntoa(iph[8])
         d_addr = inet_ntoa(iph[9])
 
@@ -53,11 +54,11 @@ class LiveCap():
             'timestamp': timestamp,
             'src': s_addr,
             'dst': d_addr,
-            'len': pkthdr.len
+            'len': length
         }
-        self.channel.queue_declare(queue='testinho', durable=True)
+        self.channel.queue_declare(queue='pack', durable=True)
         self.channel.basic_publish(exchange='',
-                                   routing_key='testinho',
+                                   routing_key='pack',
                                    body=json.dumps(pkt_info),
                                    properties=pika.BasicProperties(
                                        delivery_mode=2,  # make message persistent
